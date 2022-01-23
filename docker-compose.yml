@@ -38,7 +38,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: central
+      MYSQL_DATABASE: dev_db
       TZ: "Asia/Tokyo"
     volumes:
       - ./db/mysql/data:/var/lib/mysql

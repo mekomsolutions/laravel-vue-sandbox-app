@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Controllers\Demos\DemoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
+
+Route::middleware('auth:api')->group(function (): void {
+    Route::prefix('demos')->group(function (): void {
+        Route::get('demo', [DemoController::class, 'find']);
+        Route::put('demo', [DemoController::class, 'upsert']);
+    });
 });
