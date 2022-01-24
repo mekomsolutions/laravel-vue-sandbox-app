@@ -1,8 +1,7 @@
-import { AuthStateSymbol, useAuth } from '../store/useAuth';
+import { authProps, AuthStateSymbol } from '../store/authContext';
 
 export const auth = {
   install(app: any) {
-    const auth = useAuth();
-    app.provide(AuthStateSymbol, auth);
+    app.provide(AuthStateSymbol, authProps());
   },
 };

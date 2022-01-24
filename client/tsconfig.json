@@ -13,5 +13,5 @@
     "types": ["element-plus/global"],
     "files": ["src/App.vue"],
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "node_modules/**/*.d.ts"]
 }

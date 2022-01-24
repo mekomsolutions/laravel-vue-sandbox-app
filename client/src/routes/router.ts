@@ -2,8 +2,9 @@ import { createWebHistory, createRouter } from 'vue-router';
 import HomeVue from '../views/Home.vue';
 import AboutVue from '../views/About.vue';
 import NotFoundVue from '../views/NotFound.vue';
-import AuthorizationCallbackVue from '../views/auth/AuthorizationCallback.vue';
+import AuthorizationCallbackVue from '../views/Auth/AuthorizationCallback.vue';
 import LayoutVue from '../views/Layout.vue';
+import { demosRoutes } from '../views/Demos/demosRoutes';
 
 const routes = [
   {
@@ -25,6 +26,7 @@ const routes = [
         name: 'About',
         component: AboutVue,
       },
+      ...demosRoutes,
     ],
   },
   {

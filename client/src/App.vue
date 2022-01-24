@@ -17,4 +17,7 @@
   text-align: center;
   color: #2c3e50;
 }
+i {
+  letter-spacing: 0.3em;
+}
 </style>

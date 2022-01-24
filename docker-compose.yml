@@ -2,12 +2,13 @@ version: "3"
 
 services:
   client:
+    user: "${UID}:${GID}" # we added this line to get a specific user / group id
     build:
       context: ./docker/client
     ports:
       - 3000:3000
     volumes:
-      - ./client:/projects
+      - ./client:/projects:rw
       - .:/workspace:cached
     tty: true
 
@@ -18,7 +19,7 @@ services:
         - INSTALL_XDEBUG=${INSTALL_XDEBUG}
         - HOST_IP=${HOST_IP}
     volumes:
-      - ./server:/var/www/server
+      - ./server:/var/www/server:rw
       - .:/workspace:cached
     environment:
       - PHP_CS_FIXER_IGNORE_ENV=1
@@ -39,7 +40,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: dev_db
-      TZ: "Asia/Tokyo"
+      TZ: "UTC"
     volumes:
       - ./db/mysql/data:/var/lib/mysql
       - ./docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:cached
