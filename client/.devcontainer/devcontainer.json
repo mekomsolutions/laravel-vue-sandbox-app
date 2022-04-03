@@ -1,0 +1,38 @@
+{
+  "name": "client",
+  "dockerComposeFile": [
+    "../../docker-compose.yml"
+  ],
+  "service": "client",
+  "workspaceFolder": "/workspace/client",
+  "shutdownAction": "none",
+  "settings": {
+    "terminal.integrated.shell.linux": null,
+    "editor.formatOnSave": true,
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "githubIssues.useBranchForIssues": "off",
+    "volar.autoCompleteRefs": false
+  },
+  "extensions": [
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "hollowtree.vue-snippets",
+    "orta.vscode-jest",
+    "christian-kohler.path-intellisense",
+    "msjsdiag.debugger-for-chrome",
+    "github.vscode-pull-request-github",
+    "firsttris.vscode-jest-runner",
+    "mikestead.dotenv",
+    "streetsidesoftware.code-spell-checker",
+    "johnsoncodehk.volar",
+    "dariofuzinato.vue-peek",
+    "sdras.vue-vscode-snippets"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+    "name": "php",
+    "dockerComposeFile": [
+        "../../docker-compose.yml"
+    ],
+    "service": "php",
+    "workspaceFolder": "/workspace/server",
+    "shutdownAction": "none",
+    "settings": {
+        "editor.formatOnSave": true,
+        "php-cs-fixer.executablePath": "/workspace/server/vendor/bin/php-cs-fixer",
+        "php-cs-fixer.onsave": true,
+        "php-cs-fixer.config": ".php-cs-fixer.dist.php",
+        "php-cs-fixer.allowRisky": true,
+        "php.suggest.basic": false,
+        "php.validate.enable": false,
+        "[php]": {
+            "editor.defaultFormatter": "junstyle.php-cs-fixer"
+        },
+        "namespaceResolver.sortAlphabetically": true,
+        "githubIssues.useBranchForIssues": "off"
+    },
+    "extensions": [
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "junstyle.php-cs-fixer",
+        "bmewburn.vscode-intelephense-client",
+        "felixfbecker.php-debug",
+        "neilbrayfield.php-docblocker",
+        "mehedidracula.php-namespace-resolver",
+        "esbenp.prettier-vscode",
+        "recca0120.vscode-phpunit",
+		"ms-vscode.test-adapter-converter",
+        "github.vscode-pull-request-github",
+        "emilast.logfilehighlighter",
+        "mikestead.dotenv",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}

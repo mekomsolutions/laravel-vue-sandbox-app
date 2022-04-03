@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  client:
+    build:
+      context: ./docker/client
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/projects
+      - .:/workspace:cached
+    tty: true
+
+  php:
+    build:
+      context: ./docker/php
+      args:
+        - INSTALL_XDEBUG=${INSTALL_XDEBUG}
+        - HOST_IP=${HOST_IP}
+    volumes:
+      - ./server:/var/www/server
+      - .:/workspace:cached
+    environment:
+      - PHP_CS_FIXER_IGNORE_ENV=1
+
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./client/dist:/var/www/app/public
+      - ./server:/var/www/server
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached
+    depends_on:
+      - php
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: central
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:cached
+      - ./docker/db/mysql/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
