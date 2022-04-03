@@ -28,8 +28,7 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.client_host=${HOST_IP}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     # && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    ;fi
+    && echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ; fi
 
 ENV LANG=C.UTF-8
 ENV LANGUAGE=en_US
@@ -38,4 +37,5 @@ RUN adduser --quiet --disabled-password \
     --gecos "User" devuser && \
     echo "devuser:<a href="mailto://p@ssword1">p@ssword1</a>" | chpasswd &&  usermod -aG sudo devuser
 USER devuser
+RUN chown -R devuser:devuser /var/www/server
 WORKDIR /var/www/server
