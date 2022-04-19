@@ -25,8 +25,8 @@ class Demo extends Model
     public function toModel(): DomainModel
     {
         return new DomainModel(
-            id: $this->id,
-            name: $this->name
+            name: $this->name,
+            id: $this->id
         );
     }
 }

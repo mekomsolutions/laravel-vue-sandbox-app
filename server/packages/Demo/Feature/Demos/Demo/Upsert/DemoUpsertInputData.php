@@ -13,8 +13,8 @@ class DemoUpsertInputData
     public function __construct(array $request)
     {
         $this->demo = new Demo(
-            id: $request['id'] ?? null,
-            name: $request['name']
+            name: $request['name'],
+            id: $request['id'] ?? null
         );
     }
 

@@ -31,22 +31,3 @@ php artisan key:generate
 php artisan migrate:refresh --seed
 php artisan passport:keys
 ```
-
-
-
-## Client services
-
-This based off of `node:16.10.0-buster` and extended with a none root user for development.
-
-Start Client
-
-```
-docker compose exec client /bin/bash
-yarn
-yarn dev
-```
-Access Demo
-
-http://localhost:3000
-
-`demo@example.com / demo@demo`
