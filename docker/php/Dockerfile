@@ -29,6 +29,14 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
     # && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ; fi
 
+# install local-php-security-checker
+RUN curl -s https://api.github.com/repos/fabpot/local-php-security-checker/releases/latest \
+    | grep "browser_download_url" \
+    | grep linux_amd64 \
+    | cut -d '"' -f 4 \
+    | xargs curl -L -o /usr/local/bin/local-php-security-checker \
+    && chmod +x /usr/local/bin/local-php-security-checker
+
 ENV LANG=C.UTF-8
 ENV LANGUAGE=en_US
 RUN adduser --quiet --disabled-password \
