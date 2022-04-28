@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return apache_request_headers();
 });
 
 Route::get('/dashboard', function () {
