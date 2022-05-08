@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  client:
+    image: mekomsolutions/pca-server:latest
+    ports:
+      - "3000:80"
+    env_file:
+      - .env.prod
+    depends_on:
+      - db
+  server:
+    image: mekomsolutions/pca-server:latest
+    ports:
+      - "80:80"
+    env_file:
+      - .env.prod
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: prod_db
+      TZ: "UTC"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+volumes:
+  mysql-data: ~

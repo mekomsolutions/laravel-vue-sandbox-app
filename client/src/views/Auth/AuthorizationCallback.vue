@@ -2,11 +2,12 @@
 import PKCE from 'js-pkce';
 import { useRouter } from 'vue-router';
 import { injectAuth } from '../../store/authContext';
+const baseApiUrl = import.meta.env.VITE_BASE_API_URL
 
 const pkce = new PKCE({
   client_id: '1',
   redirect_uri: location.origin + '/auth/callback',
-  token_endpoint: 'http://localhost/server/oauth/token',
+  token_endpoint: `${baseApiUrl}/oauth/token`,
 });
 const { setTokens } = injectAuth();
 const router = useRouter();

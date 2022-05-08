@@ -15,7 +15,7 @@ class DemoSeeder extends Seeder
      */
     public function run(): void
     {
-        // @note `php artisan passport:client --public` の代わりです
+        // @note `php artisan passport:client --public`
         DB::table('oauth_clients')->insert([
             'user_id' => 1,
             'name' => 'demo',
