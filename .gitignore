@@ -5,3 +5,4 @@ server/.env
 server/storage/*.key
 server/.bash_history
 server/.rnd
+act.secrets
