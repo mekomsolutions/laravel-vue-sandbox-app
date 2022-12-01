@@ -23,6 +23,9 @@ services:
       - .:/workspace:cached
     environment:
       - PHP_CS_FIXER_IGNORE_ENV=1
+    depends_on:
+      - db
+      - redis
 
   nginx:
     image: nginx
@@ -47,3 +50,8 @@ services:
       - ./docker/db/mysql/initdb.d:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
